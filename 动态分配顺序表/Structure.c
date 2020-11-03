@@ -27,10 +27,20 @@ void ClearList(SeqList* L)
 }
 
 /*顺序表的动态增长*/
-void IncreaseSize(SeqList* L, int len)
+int IncreaseSize(SeqList* L, int len)
 {
-          L->data = (ElemType*)realloc(L->data, sizeof(ElemType) * (L->Length + len));
-          L->MaxSize += len;
+          L->data = (ElemType*)realloc(L->data, sizeof(ElemType) * (L->MaxSize + len));
+          assert(L->data != NULL);
+          if (L->data == NULL)
+          {
+                    printf("程序增加空间失败，内存不足\n");
+                    return 0;
+          }
+          else
+          {
+                    L->MaxSize += len;
+                    return 1;
+          }
 }
 
 /*顺序表的头插法*/

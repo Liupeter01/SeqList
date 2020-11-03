@@ -24,7 +24,7 @@ typedef struct SeqList
 
 void InitList(SeqList* L);//顺序表的初始化
 void Destory(SeqList* L);//顺序表的销毁
-void IncreaseSize(SeqList* L, int len);//顺序表的动态增长
+int IncreaseSize(SeqList* L, int len);//顺序表的动态增长
 int LocateElem(SeqList L, ElemType e);//顺序表的按值查找
 int Length(SeqList L);//求表长
 void PrintList(SeqList L);//输出全表
