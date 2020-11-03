@@ -14,7 +14,7 @@ void Menu(SeqList* list)
                     printf("*   [9]  delete_pos      \t[10] delete_val           \t*\n");
                     printf("*   [11]  Sort               \t[12] reverse               \t*\n");
                     printf("*   [13]  Clear             \t[14] Destroy(dangerous) \t*\n");
-                    printf("*   [15]  Cls                \t[16]  ExtendSpace        \t*\n");
+                    printf("*   [15]  Cls                \t[16] ExtendSpace        \t*\n");
                     printf("*   [0]  Quit                                                 \t*\n");
                     printf("*****************************************************************\n");
                     printf("ÇëÑ¡Ôñ£º>");
