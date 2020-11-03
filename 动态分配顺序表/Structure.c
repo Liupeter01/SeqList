@@ -46,34 +46,30 @@ int IncreaseSize(SeqList* L, int len)
 /*顺序表的头插法*/
 void push_front(SeqList* L, ElemType item)
 {
-          if (L->Length + 1 == L->MaxSize)
+          if (L->Length + 1 == L->MaxSize && IncreaseSize(L,1))       //可以自动的扩展空间
           {
                     printf("表已满，不可以插入数据\n");
                     return;
           }
-          else
+          for (int i = L->Length; i > 0; --i)     //移动
           {
-                    for (int i = L->Length; i > 0; --i)     //移动
-                    {
-                              L->data[i] = L->data[i - 1];
-                    }
-                    L->data[0] = item;            //头部插入
-                    L->Length++;
+                    L->data[i] = L->data[i - 1];
           }
+          L->data[0] = item;            //头部插入
+          L->Length++;
 }
 
 /*顺序表的尾插法*/
 void push_back(SeqList* L, ElemType item)
 {
-          if (L->Length + 1 == L->MaxSize)
+          //空间已满，但是可以自动的扩展空间则继续操作
+          //若空间已满，但是自动扩展空间失败，内存不足则返回
+          if (L->Length + 1 == L->MaxSize && IncreaseSize(L, 1))       
           {
                     printf("表已满，不可以插入数据\n");
                     return;
           }
-          else
-          {
-                    L->data[(L->Length)++] = item;
-          }
+          L->data[(L->Length)++] = item;
 }
 
 /*顺序表的插入*/
@@ -84,21 +80,20 @@ int ListInsert(SeqList* L, int  pos, ElemType e)
                     printf("插入的数据的位置非法，不可以插入数据\n");
                     return 0;
           }
-          else if (L->Length + 1 > L->MaxSize)   //返回的存储空间已满
+          else if (L->Length + 1 > L->MaxSize && IncreaseSize(L, 1))
           {
+                    //空间已满，但是可以自动的扩展空间则继续操作
+                     //若空间已满，但是自动扩展空间失败，内存不足则返回
                     printf("数据不可以插入，数组已满\n");
                     return 0;
           }
-          else
+          for (int j = L->Length; j >= pos; --j)
           {
-                    for (int j = L->Length; j >= pos; --j)
-                    {
-                              L->data[j] = L->data[j - 1];
-                    }
-                    L->data[pos - 1] = e;   //位置4对应于下标3
-                    L->Length++;
-                    return 1;
+                    L->data[j] = L->data[j - 1];
           }
+          L->data[pos - 1] = e;   //位置4对应于下标3
+          L->Length++;
+          return 1;
 }
 
 /*顺序表的尾部删除法*/
