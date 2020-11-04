@@ -267,7 +267,10 @@ void Merge(SeqList* L, SeqList* l1, SeqList* l2)
           HeapSort(l1);       //将线性表l1有序化
           HeapSort(l2);       //将线性表l2有序化
           L->Length = l1->Length + l2->Length;
+          L->MaxSize = L->Length;
           L-> data = (ElemType*)malloc(sizeof(ElemType)*L->Length);      //扩展长度
+          assert(L->data != NULL);                //静态断言
+
           int i = 0, j = 0, pos = 0;              //i存储l1，j存储l2，pos存储L
           for (i, j,pos; i <= l1->Length - 1 &&  j <= l2->Length - 1; )
           {
