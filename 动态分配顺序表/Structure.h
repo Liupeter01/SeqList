@@ -30,7 +30,7 @@ int Length(SeqList L);//求表长
 void PrintList(SeqList L);//输出全表
 int Empty(SeqList L);//表是否为空
 void Reverse(SeqList* L);//线性表的逆转
-void Merge(SeqList* L, SeqList* l1, SeqList* l2);//两个有序的线性表的合并
+void Merge(SeqList* L, SeqList* l1, SeqList* l2);//两个有序的线性表l1和l2合并为一个新的线性表
 ElemType GetElem(SeqList L, int i);//顺序表的按位置号查找
 void ClearList(SeqList* L);//清除顺序表
 
