@@ -46,7 +46,9 @@ int IncreaseSize(SeqList* L, int len)
 /*顺序表的头插法*/
 void push_front(SeqList* L, ElemType item)
 {
-          if (L->Length + 1 == L->MaxSize && IncreaseSize(L,1))       //可以自动的扩展空间
+          //空间已满1，但是可以自动的扩展空间则继续操作1
+          //若空间已满1，但是自动扩展空间失败0，内存不足则返回
+          if (L->Length + 1 == L->MaxSize && !IncreaseSize(L,1))       //可以自动的扩展空间
           {
                     printf("表已满，不可以插入数据\n");
                     return;
@@ -62,9 +64,9 @@ void push_front(SeqList* L, ElemType item)
 /*顺序表的尾插法*/
 void push_back(SeqList* L, ElemType item)
 {
-          //空间已满，但是可以自动的扩展空间则继续操作
-          //若空间已满，但是自动扩展空间失败，内存不足则返回
-          if (L->Length + 1 == L->MaxSize && IncreaseSize(L, 1))       
+          //空间已满1，但是可以自动的扩展空间则继续操作1
+          //若空间已满1，但是自动扩展空间失败0，内存不足则返回
+          if (L->Length + 1 == L->MaxSize && !IncreaseSize(L, 1))       
           {
                     printf("表已满，不可以插入数据\n");
                     return;
@@ -80,10 +82,10 @@ int ListInsert(SeqList* L, int  pos, ElemType e)
                     printf("插入的数据的位置非法，不可以插入数据\n");
                     return 0;
           }
-          else if (L->Length + 1 > L->MaxSize && IncreaseSize(L, 1))
+          else if (L->Length + 1 > L->MaxSize && !IncreaseSize(L, 1))
           {
-                    //空间已满，但是可以自动的扩展空间则继续操作
-                     //若空间已满，但是自动扩展空间失败，内存不足则返回
+                    //空间已满1，但是可以自动的扩展空间则继续操作1
+                     //若空间已满1，但是自动扩展空间失败0，内存不足则返回
                     printf("数据不可以插入，数组已满\n");
                     return 0;
           }
